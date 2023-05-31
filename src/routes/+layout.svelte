@@ -4,16 +4,53 @@
   import './app.css';
 
   export let data;
-  $location = data?.ipData;
+
+  console.log(data?.dev ? "$app/environment: Development" : "$app/environment: Production" );
+  // console.log("SK Version:", data?.version.name);
+  
 
   let title = 'Home';
   const routes = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
   ];
+  
+  function init() {
+    $location = data?.ipData;
+    let lat, lon;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+
+        console.log("COORDS: ", {lat, lon});
+
+        const res = await fetch(`api/reverseTomtom`, {
+          method: "POST",
+          body: JSON.stringify({ lat, lon }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+
+        // console.log('geoData',data?.location);
+        // const geo = await data.location;
+        $location = await {
+          name: "geoData", 
+          ...data.location
+        };
+      }, (err) => {
+        console.log("Browser Geolocation not available");
+      });
+    } else {
+      console.log("Geolocation is not supported by your browser");
+    }
+  }
 
   onMount(() => {
-
+    init();
   });
 </script>
 

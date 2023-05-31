@@ -1,11 +1,9 @@
 // import { SEECRET } from '$env/static/private';
-import { dev } from "$app/environment";
+import { dev, version } from "$app/environment";
 let ipData;
 
 export async function load(event) {
 
-  console.log("DEV", dev);
-  
   if (dev) {
     // const res = await event.fetch('/api/ipapi');
     // ipData = await res.json();
@@ -32,6 +30,7 @@ export async function load(event) {
   
 
 	return {
-		ipData: { origin: "ipData", ...ipData}
+		ipData: { origin: "ipData", ...ipData},
+    dev, version
 	};
 }
