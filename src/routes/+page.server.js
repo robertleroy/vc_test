@@ -23,10 +23,10 @@ export async function load(event) {
     ipData = {
       ip:      event.getClientAddress(),
       city:    decodeURIComponent(event.request.headers.get('x-vercel-ip-city') ?? 'unknown'),
-      region:  decodeURIComponent(request.headers.get('x-vercel-ip-country-region') ?? 'unknown'),
-      country: decodeURIComponent(request.headers.get('x-vercel-ip-country') ?? 'unknown'),
-      lat:     decodeURIComponent(request.headers.get('x-vercel-ip-latitude') ?? 'unknown'),
-      lon:     decodeURIComponent(request.headers.get('x-vercel-ip-longitude') ?? 'unknown'),
+      region:  decodeURIComponent(event.request.headers.get('x-vercel-ip-country-region') ?? 'unknown'),
+      country: decodeURIComponent(event.request.headers.get('x-vercel-ip-country') ?? 'unknown'),
+      lat:     decodeURIComponent(event.request.headers.get('x-vercel-ip-latitude') ?? 'unknown'),
+      lon:     decodeURIComponent(event.request.headers.get('x-vercel-ip-longitude') ?? 'unknown'),
     }
   }
   
