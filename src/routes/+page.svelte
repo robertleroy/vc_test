@@ -3,7 +3,13 @@
 	// export let data;
   
   export let form;
-  $: $location = form?.newLocation;
+
+  $: form?.newLocation && updateLocation();
+
+  function updateLocation() {
+    $location = form?.newLocation;
+  }
+  // $: $location = form?.newLocation;
   // $: console.log("newLocation", form?.newLocation);
 </script>
 
@@ -19,8 +25,3 @@
     <pre>{JSON.stringify($location,0,2)}</pre>
   </div>
 </div>
-
-<h4>Notes</h4>
-<ul>
-  <li>Store navigator permission in cookies - eliminate the loading ipData then swapping</li>
-</ul>

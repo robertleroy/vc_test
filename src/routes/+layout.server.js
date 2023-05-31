@@ -4,6 +4,8 @@ let ipData;
 
 export async function load(event) {
 
+  // if (event.cookies.get("geolocation")) return;
+
   if (dev) {
     // const res = await event.fetch('/api/ipapi');
     // ipData = await res.json();

@@ -37,7 +37,7 @@ export async function POST({ request, cookies }) {
 
 function formatTomtom(data) {
   let obj = {};
-  obj.type = "searchData"
+  obj.origin = "searchData"
   obj.id = Date.now().toString(16).slice(-8);
   obj.city = data.address.municipalitySubdivision ?
     data.address.municipalitySubdivision :

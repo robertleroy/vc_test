@@ -43,16 +43,20 @@
         // console.log('geoData',data?.location);
         // const geo = await data.location;
         $location = await {
-          name: "geoData", 
+          origin: "geoData", 
           ...data.location
         };
+        // const exp = new Date(new Date().getTime() + (7*24*60*60*1000)).toUTCString();        
+        // document.cookie = "geolocation=true; expires=" + exp + "; path=/";
         
         $initialLocation = {...$location};
       }, (err) => {
-        console.log("Browser Geolocation not available");
+        console.log("Browser Geolocation not available");        
+        // document.cookie = "geolocation=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       });
     } else {
       console.log("Geolocation is not supported by your browser");
+      // document.cookie = "geolocation=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
     }
   }
 
@@ -66,6 +70,9 @@
     <div class='title'>
       <a href='/'>{title}</a>
     </div>
+
+    
+    <a href="/" data-sveltekit-reload button>reload</a>
 
     <form method="POST" action="?/search" use:enhance>
       <input type="text" name="searchTerm" />
