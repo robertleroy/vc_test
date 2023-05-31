@@ -1,10 +1,20 @@
 <script>
+  import { onMount } from 'svelte';
+  import { location } from '$lib/store';
   import './app.css';
+
+  export let data;
+  $location = data?.ipData;
+
   let title = 'Home';
   const routes = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
   ];
+
+  onMount(() => {
+
+  });
 </script>
 
 <header class=''>
