@@ -24,3 +24,11 @@ h1, h2 {
   margin: 0;
 }
 p { margin: 0.5em 0; }
+ul {
+  margin-top: 0;
+  padding-left: 2ch;
+  list-style-position: inside;
+}
+ul:not(ul ul) {
+  padding: 0;
+}

@@ -1,9 +1,15 @@
 <script>
+  import { enhance } from '$app/forms';
   import { onMount } from 'svelte';
-  import { location } from '$lib/store';
+  import { location, initialLocation } from '$lib/store';
   import './app.css';
 
   export let data;
+  $location = data?.ipData;
+  $initialLocation = data?.ipData;
+  
+  // export let form;
+  // $: console.log(form?.newLocation);
 
   console.log(data?.dev ? "$app/environment: Development" : "$app/environment: Production" );
   // console.log("SK Version:", data?.version.name);
@@ -16,7 +22,6 @@
   ];
   
   function init() {
-    $location = data?.ipData;
     let lat, lon;
 
     if (navigator.geolocation) {
@@ -24,7 +29,7 @@
         lat = position.coords.latitude;
         lon = position.coords.longitude;
 
-        console.log("COORDS: ", {lat, lon});
+        // console.log("COORDS: ", {lat, lon});
 
         const res = await fetch(`api/reverseTomtom`, {
           method: "POST",
@@ -41,6 +46,8 @@
           name: "geoData", 
           ...data.location
         };
+        
+        $initialLocation = {...$location};
       }, (err) => {
         console.log("Browser Geolocation not available");
       });
@@ -59,6 +66,11 @@
     <div class='title'>
       <a href='/'>{title}</a>
     </div>
+
+    <form method="POST" action="?/search" use:enhance>
+      <input type="text" name="searchTerm" />
+    </form>
+
     <nav>
       {#each routes as route}
       <div class='route'>

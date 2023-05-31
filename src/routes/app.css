@@ -20,3 +20,10 @@ a {
     text-decoration: none;
   }
 }
+
+.form_control {
+  label { font-size: 0.8em; }
+  pre { margin-top: 0 }
+}
+h4 { margin-bottom: 0 }
+ul { margin-top: 0 }
