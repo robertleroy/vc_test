@@ -1,0 +1,22 @@
+@import "$lib/styles/reset.css";
+@import "$lib/styles/forms.css";
+/* @import '$lib/styles/vsdark.css'; */
+
+:root {
+  --header-height: 4rem;
+  --sidebar-width: 100%;
+  --border: 1px solid #ccc;
+  --max-width: 960px;
+}
+html {
+  scroll-behavior: smooth;
+  /* scroll-padding-top: var(--header-height); */
+}
+a {
+  color: inherit;
+
+  &:not(:hover),
+  &:active {
+    text-decoration: none;
+  }
+}
