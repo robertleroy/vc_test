@@ -1,14 +1,14 @@
 <script>
-  import { location, initialLocation } from '$lib/store';
+  import { location } from '$lib/store';
 	// export let data;
   
-  export let form;
+  // export let form;
 
-  $: form?.newLocation && updateLocation();
+  // $: form?.newLocation && updateLocation();
 
-  function updateLocation() {
-    $location = form?.newLocation;
-  }
+  // function updateLocation() {
+  //   $location = form?.newLocation;
+  // }
   // $: $location = form?.newLocation;
   // $: console.log("newLocation", form?.newLocation);
 </script>
@@ -16,12 +16,12 @@
 
 
 <div class="info">
-  <div class='form_control'>
-    <label>Initial Location</label>
+  <!-- <div class='form_control'>
+    <div class="label">Initial Location</div>
     <pre>{JSON.stringify($initialLocation,0,2)}</pre>
-  </div>
+  </div> -->
   <div class='form_control'>
-    <label>Current Location</label>
+    <div class="label">Location</div>
     <pre>{JSON.stringify($location,0,2)}</pre>
   </div>
 </div>

@@ -1,5 +1,5 @@
 :root {
-  --font-size: 16px;
+  --font-size: 18px;
   --text-color: #2C3E50;
   --background-color: #fff;
   --sans-serif: sans-serif;
@@ -29,6 +29,11 @@ ul {
   padding-left: 2ch;
   list-style-position: inside;
 }
+ol { 
+  padding-left: 2ch;  
+}
+ol ol { list-style-type: lower-latin; }
+ol ol ol { list-style-type: lower-roman; }
 ul:not(ul ul) {
   padding: 0;
 }
